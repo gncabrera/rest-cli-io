@@ -10,7 +10,7 @@ const fs = require('fs')
 
 // load rest-cli-io configuration - it defines the conf variable
 try {
-    require('/etc/rest-cli-io.conf');
+    require(process.env.CONFIG_FILE || '/etc/rest-cli-io.conf');
 } catch(error) {
     try {
         require('rest-cli-io.conf');
