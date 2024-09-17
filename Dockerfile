@@ -15,6 +15,13 @@ ARG uid=1000
 ARG gid=1000
 ENV CONFIG_FILE=/config/rest-cli-io.conf
 
+RUN apt-get update \
+    && echo "----- Installing dependencies" \
+    && apt-get install tree -y\
+    && echo "----- Cleaning" \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+    
 WORKDIR /rest-cli-io
 
 COPY package.json ./
